@@ -2,10 +2,11 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { ChevronLeft, Sparkles } from "lucide-react"
+import { ChevronLeft, Sparkles, GitBranch } from "lucide-react"
 import { QuestionStep } from "./question-step"
 import { ResultsView } from "./results-view"
 import { questions, type Answer } from "@/lib/questions"
+import Link from "next/link"
 
 export function TechSelector() {
   const [currentStep, setCurrentStep] = useState(0)
@@ -50,14 +51,22 @@ export function TechSelector() {
       {/* Header */}
       <header className="border-b border-border bg-card">
         <div className="container mx-auto px-4 py-4 md:py-6">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-              <Sparkles className="h-5 w-5 text-primary-foreground" />
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
+                <Sparkles className="h-5 w-5 text-primary-foreground" />
+              </div>
+              <div>
+                <h1 className="text-xl md:text-2xl font-semibold text-balance">Asistente de Selección Tecnológica</h1>
+                <p className="text-sm text-muted-foreground">Encuentra el stack perfecto para tu proyecto</p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-xl md:text-2xl font-semibold text-balance">Asistente de Selección Tecnológica</h1>
-              <p className="text-sm text-muted-foreground">Encuentra el stack perfecto para tu proyecto</p>
-            </div>
+            <Link href="/diagram">
+              <Button variant="outline" size="sm" className="gap-2 bg-transparent">
+                <GitBranch className="h-4 w-4" />
+                <span className="hidden sm:inline">Ver Árbol</span>
+              </Button>
+            </Link>
           </div>
         </div>
       </header>
